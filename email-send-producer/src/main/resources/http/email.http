@@ -1,0 +1,22 @@
+### 성공
+POST http://localhost:8080/api/emails
+Content-Type: application/json
+
+{
+  "from": "from@test.com",
+  "to": "to@test.com",
+  "body": "body",
+  "subject": "subject"
+}
+
+
+### 실패
+POST http://localhost:8080/api/emails
+Content-Type: application/json
+
+{
+"from": "from@test.com",
+"to": "fail@test.com",
+"body": "body",
+"subject": "subject"
+}

@@ -1,0 +1,14 @@
+server:
+  port: 0 # 사용 가능한 랜덤한 포트 번호로 실행
+
+spring:
+  kafka:
+    listener:
+      ack-mode: manual
+    bootstrap-servers: localhost:9092
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: earliest # from-beginning 과 비슷.
+      ## 컨슈머 그룹이 없으면 생성하고, 기존 것을 포함 한 것 중 가장 빠른 것을 가져오고,
+      ## 해당 설정을 안하면, 컨슈머 그룹이 생성 되기 전의 요청은 처리 하지 않고 이후에 들어온 것을 가져오기에 해당 설정이 필요.
