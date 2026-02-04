@@ -8,6 +8,9 @@
       <module name="email-send-producer" options="-parameters" />
       <module name="email-send-producer.main" options="-parameters" />
       <module name="email-send-producer.test" options="-parameters" />
+      <module name="encryptModule" options="-parameters" />
+      <module name="encryptModule.main" options="-parameters" />
+      <module name="encryptModule.test" options="-parameters" />
     </option>
   </component>
 </project>
