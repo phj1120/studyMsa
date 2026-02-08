@@ -11,7 +11,7 @@ class CryptoUtils {
         }
 
         fun decrypt(encryptText: String): String {
-            return encryptText.removeSuffix("encrypted")
+            return encryptText.removeSuffix("-encrypt")
         }
 
         fun getDecryptText(plainText: String, encryptText: String?): String {

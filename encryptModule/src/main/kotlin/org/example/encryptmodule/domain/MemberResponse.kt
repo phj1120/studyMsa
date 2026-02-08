@@ -22,7 +22,7 @@ data class MemberResponse (
             return MemberResponse(
                 id = member.id!!,
                 name = CryptoUtils.getDecryptText(member.name, member.nameEncrypted),
-                phoneNumber = CryptoUtils.getDecryptText(member.phoneNumber, member.phoneNumber),
+                phoneNumber = CryptoUtils.getDecryptText(member.phoneNumber, member.phoneNumberEncrypted),
                 age = member.age
             )
         }

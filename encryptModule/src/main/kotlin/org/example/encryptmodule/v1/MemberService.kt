@@ -3,11 +3,13 @@ package org.example.encryptmodule.v1
 import org.example.encryptmodule.domain.Member
 import org.example.encryptmodule.domain.MemberRequest
 import org.example.encryptmodule.domain.MemberResponse
+import org.example.encryptmodule.external.ExternalApiClient
 import org.springframework.stereotype.Service
 
 @Service
 class MemberService(
     private val memberRepository: MemberRepository,
+    private val externalApiClient: ExternalApiClient
 ) {
 
     // 암복호화 필드를 V1, V2 공통 영역에서 사용할 경우
@@ -33,6 +35,11 @@ class MemberService(
 
 
     fun createMember(memberRequest: MemberRequest): Member {
+        val validatePhoneNumber = externalApiClient.validatePhoneNumber(memberRequest.phoneNumber)
+        if(!validatePhoneNumber){
+            throw IllegalArgumentException("Invalid phone number")
+        }
+
         val member: Member = memberRequest.toMember()
         return memberRepository.save(member)
     }
