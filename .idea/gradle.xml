@@ -5,6 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/email-send-consumer" />
+        <option name="gradleJvm" value="graalvm-jdk-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/email-send-consumer" />
@@ -13,6 +14,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/email-send-producer" />
+        <option name="gradleJvm" value="graalvm-jdk-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/email-send-producer" />
@@ -21,6 +23,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/encryptModule" />
+        <option name="gradleJvm" value="graalvm-jdk-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/encryptModule" />
