@@ -14,15 +14,14 @@ class CryptoUtils {
             return encryptText.removeSuffix("-encrypt")
         }
 
-        fun getDecryptText(plainText: String, encryptText: String?): String {
+        fun getDecryptText(encryptText: String?, plainText: String?): String? {
             if (encryptText == null) {
                 return plainText
             }
-            val decryptText = decrypt(encryptText)
-            if(decryptText == plainText) {
+            if(encryptText == plainText) {
                 return plainText
             }
-            return decryptText
+            return encryptText
         }
 
         fun <T : Any, F> getDecryptTextFieldName(target: T, encryptField: KProperty1<T, F>): String {
@@ -64,8 +63,8 @@ fun Member.decrypt(): Member {
     // 암호화 X, 평문X <- 암호화 데이터 없으면 평문 데이터 내리니까 이슈 X
     // RO DB 로 접근해서 읽었다가 없데이트 해서 뻑나면 조회 안되니까.
     // 운영 마인드로 방어적으로 가면 진짜 그냥 DTO 로 안전빵으로가는게 나을 듯.
-    this.phoneNumber = CryptoUtils.getDecryptText(this.phoneNumber, this.phoneNumberEncrypted!!)
-    this.name = CryptoUtils.getDecryptText(this.name, this.nameEncrypted!!)
+    this.phoneNumber = CryptoUtils.getDecryptText(this.phoneNumber, this.phoneNumberEncrypted)!!
+    this.name = CryptoUtils.getDecryptText(this.name, this.nameEncrypted)!!
 
     return this
 }

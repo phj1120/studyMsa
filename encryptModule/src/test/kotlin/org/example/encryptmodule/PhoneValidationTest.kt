@@ -2,11 +2,9 @@ package org.example.encryptmodule
 
 import io.mockk.every
 import io.mockk.mockk
+import org.example.encryptmodule.bussiness.MemberService
+import org.example.encryptmodule.domain.MemberRepository
 import org.example.encryptmodule.domain.MemberRequest
-import org.example.encryptmodule.v1.MemberRepository
-import org.example.encryptmodule.v1.MemberService
-import org.example.encryptmodule.v2.MemberRepositoryV2
-import org.example.encryptmodule.v2.MemberServiceV2
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -21,7 +19,7 @@ import org.junit.jupiter.api.assertThrows
 class PhoneValidationTest {
 
     @Test
-    fun `V1 전화번호 검증 실패시 예외가 발생해야 한다`() {
+    fun `전화번호 검증 실패시 예외가 발생해야 한다`() {
         // Given: FakeExternalApiClient로 검증 실패 설정
         val fakeApiClient = FakeExternalApiClient()
         fakeApiClient.shouldValidate = false
@@ -40,26 +38,7 @@ class PhoneValidationTest {
     }
 
     @Test
-    fun `V2 전화번호 검증 실패시 예외가 발생해야 한다`() {
-        // Given: FakeExternalApiClient로 검증 실패 설정
-        val fakeApiClient = FakeExternalApiClient()
-        fakeApiClient.shouldValidate = false
-
-        val mockRepository = mockk<MemberRepositoryV2>()
-        val memberService = MemberServiceV2(mockRepository, fakeApiClient)
-
-        val request = MemberRequest(name = "홍길동", phoneNumber = "01012345678", age = 29)
-
-        // When & Then: 예외 발생 확인
-        val exception = assertThrows<IllegalArgumentException> {
-            memberService.createMember(request)
-        }
-
-        assertEquals("Invalid phone number", exception.message)
-    }
-
-    @Test
-    fun `V1 전화번호 검증 성공시 정상 처리되어야 한다`() {
+    fun `전화번호 검증 성공시 정상 처리되어야 한다`() {
         // Given: FakeExternalApiClient로 검증 성공 설정
         val fakeApiClient = FakeExternalApiClient()
         fakeApiClient.shouldValidate = true  // 기본값이지만 명시
@@ -79,24 +58,4 @@ class PhoneValidationTest {
         assertEquals("01012345678", result.phoneNumber)
     }
 
-    @Test
-    fun `V2 전화번호 검증 성공시 정상 처리되어야 한다`() {
-        // Given: FakeExternalApiClient로 검증 성공 설정
-        val fakeApiClient = FakeExternalApiClient()
-        fakeApiClient.shouldValidate = true
-
-        val mockRepository = mockk<MemberRepositoryV2>()
-        every { mockRepository.save(any()) } answers { firstArg() }
-
-        val memberService = MemberServiceV2(mockRepository, fakeApiClient)
-
-        val request = MemberRequest(name = "홍길동", phoneNumber = "01012345678", age = 29)
-
-        // When: 정상 처리 (예외 발생 안 함)
-        val result = memberService.createMember(request)
-
-        // Then: 정상 처리됨
-        assertEquals("홍길동", result.name)
-        assertEquals("01012345678", result.phoneNumber)
-    }
 }
