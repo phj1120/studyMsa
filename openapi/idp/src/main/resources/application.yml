@@ -1,0 +1,37 @@
+spring:
+  profiles:
+    default: local
+  application:
+    name: idp
+  datasource:
+    url: jdbc:mysql://localhost:3306/openapi_db?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: openapi
+    password: openapi123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 9002
+
+openapi:
+  jwt:
+    issuer: http://localhost:9002
+    key-id: api-key-v1
+    expiration-seconds: 3600
+    private-key-base64: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCTQokNqQN8tlj4K3gVWN4xWs9hoJ4UGSNbXoKwAjD4Y0rP68Yv356Qkgoqoa+b+K+pAdss6UJTWqOwNTg44XVT5nYkOFnKHr1n/3k4A9bn29gudPZphIXTGzeRc3Od6Cjjt9l7IMYobO1jR13YMdx+IORWb/+Tc6lTFSHAFeCUZAJbY9eVdnAdd2ciLQ48TvUuB+1a1kSk+8kecWLzX1sVsmlGRy+hl7i/NmeP5oxeb0MHX0KMb3WF7BtS3TFQIsy03/D05Gp33aSnt8qYfYP/8fxeZL0+CvH7SaRP46+3BN3TnntZ4bJBSx1hT2vDE9w2sJB7h3FPXbnqLaP8wTxTAgMBAAECggEABsL3vabUpo9NrbRHqUNEjVbMGuff5xa+zUOdRvoMYZTwxHQUMr9XB1bAgycCNzkuAUA497dZXxZt80aEtFscPHDI9lTLQQ3N4jT6zejVn1Ca41cyt7M1qdts3vYPVi4CYqJe3AzfMs/9mAdlqbc9MC8DQDmYR9IrV8mqnEIYGitQXDjykFLDNvDBjDqDzo2zLfgoyAWDdOmSl7dWskxsMB9hlXZrAcLDe+v4Zu9B3gsNW17VKhIknkfnStoxWrmpT8nOXS/g1fCLKJ0tHwssf0B33QsH5fMQCDGQtHV2Z3WuLcPQ0+tFI5XB7t69d8NVe/eXDAe/WlPF/k7yAR1DUQKBgQDK1okddY0bjmuhUmRyMRcB0pQTmZXZoLHaGw2ARk+dl4k+oZO37edue03oXTGSwkhFXVT3N4YDl3h+QrJJu75c8pjMib77n4gQZuSFFSqfpQ3tegxkgNlKF/UJdvZNAGf65Shs972OD4v6mg7XOYEiYaBJU1J8xSkqaUzo16vQFwKBgQC52vj64DLN3QJFZ5Th6qBxOXrUq0/X8PmQth3AKt+dqdKWejuT3NlkrnceaSXzeeizaTuf8/RGk5V5gbKyWSnemqQhaFXR/Kl4HWgaT76qtTCQAWXYGBsP6OlWT5sqjhx1M4Gkx6zhw9vc/+MkVcfov+iDjohPhukoupz8nI2/JQKBgHCq+CCv8gBzfJ9wN7EiSWhOwsecURtAYmoHCtnMtF6SFL8AWyAYeqvou96tHWMqnaBB9ncXlU4bbeecPpIsQdI5QtyiSr5T3+1UaezuU+23beQSHh4ZYBkC864dMTSWXCuF7I2Skuz8/8DkoAe2vl8NoU35hWEe1v3i3cCcQ6hjAoGAec9LidmxUn18hJKL4LmPKEY8+++/p88XMkI6I322C7aG//ri21lO3g7+oV7W8cm/uv7IhmA0hKErwXRA82U+7Ne7pO2l+be4NrJHTZ9gXq/cQTW5UzURX48Oh3QrRWvYuPPmD2KTK3Dbw++uJl1WZXSJ5tde/Yh1fi04wNO2j0UCgYAFBrWwNg0SlzSLBvmAm9RmYGr1kqcioxtXzeke7Sn5eZOx9F21xjP2c36cDtb8ZJNdyn4Q5XMckbWpohFS4nbk1rbk04rHbzQPyMnP40aEHaeZm8quEInlWLCPC7U7une5+dx+ggHxZw2XdbMofjtmgSrFpJ2p3EaCvcikqbtqfg==
+    public-key-base64: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAk0KJDakDfLZY+Ct4FVjeMVrPYaCeFBkjW16CsAIw+GNKz+vGL9+ekJIKKqGvm/ivqQHbLOlCU1qjsDU4OOF1U+Z2JDhZyh69Z/95OAPW59vYLnT2aYSF0xs3kXNznego47fZeyDGKGztY0dd2DHcfiDkVm//k3OpUxUhwBXglGQCW2PXlXZwHXdnIi0OPE71LgftWtZEpPvJHnFi819bFbJpRkcvoZe4vzZnj+aMXm9DB19CjG91hewbUt0xUCLMtN/w9ORqd92kp7fKmH2D//H8XmS9Pgrx+0mkT+OvtwTd0557WeGyQUsdYU9rwxPcNrCQe4dxT1256i2j/ME8UwIDAQAB
+
+logging:
+  level:
+    org.example.openapi: DEBUG

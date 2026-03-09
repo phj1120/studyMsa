@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="auth" target="17" />
+      <module name="auth.main" target="17" />
+      <module name="auth.test" target="17" />
+      <module name="product" target="17" />
+      <module name="product.main" target="17" />
+      <module name="product.test" target="17" />
+    </bytecodeTargetLevel>
+  </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth" options="-parameters" />
+      <module name="auth.main" options="-parameters" />
+      <module name="auth.test" options="-parameters" />
       <module name="email-send-consumer" options="-parameters" />
       <module name="email-send-consumer.main" options="-parameters" />
       <module name="email-send-consumer.test" options="-parameters" />
@@ -11,6 +24,21 @@
       <module name="encryptModule" options="-parameters" />
       <module name="encryptModule.main" options="-parameters" />
       <module name="encryptModule.test" options="-parameters" />
+      <module name="open-api-platform.idp" options="-parameters" />
+      <module name="open-api-platform.idp.main" options="-parameters" />
+      <module name="open-api-platform.idp.test" options="-parameters" />
+      <module name="open-api-platform.open-api-gateway.public" options="-parameters" />
+      <module name="open-api-platform.open-api-gateway.public.main" options="-parameters" />
+      <module name="open-api-platform.open-api-gateway.public.test" options="-parameters" />
+      <module name="open-api-platform.openapi-test" options="-parameters" />
+      <module name="open-api-platform.openapi-test.main" options="-parameters" />
+      <module name="open-api-platform.openapi-test.test" options="-parameters" />
+      <module name="open-api-platform.tenant-admin" options="-parameters" />
+      <module name="open-api-platform.tenant-admin.main" options="-parameters" />
+      <module name="open-api-platform.tenant-admin.test" options="-parameters" />
+      <module name="product" options="-parameters" />
+      <module name="product.main" options="-parameters" />
+      <module name="product.test" options="-parameters" />
     </option>
   </component>
 </project>

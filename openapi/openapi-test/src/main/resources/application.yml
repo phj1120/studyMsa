@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: openapi-test
+
+server:
+  port: 9090

@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/auth" />
     <file type="web" url="file://$PROJECT_DIR$/email-send-consumer" />
     <file type="web" url="file://$PROJECT_DIR$/email-send-producer" />
     <file type="web" url="file://$PROJECT_DIR$/encryptModule" />
+    <file type="web" url="file://$PROJECT_DIR$/openapi" />
+    <file type="web" url="file://$PROJECT_DIR$/product" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_24" default="true" project-jdk-name="corretto-24" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_21" default="true" project-jdk-name="ms-21" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

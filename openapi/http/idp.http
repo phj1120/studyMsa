@@ -1,0 +1,73 @@
+### =============================================================
+### IDP (Identity Provider) - http://localhost:9002
+### =============================================================
+
+
+### JWKS 공개키 조회
+GET {{idp_url}}/oauth/.well-known/jwks.json
+Accept: application/json
+
+
+### ----------------------------------------------------------------
+### OAuth2 Token
+### ----------------------------------------------------------------
+
+### Client Credentials Grant - 토큰 발급
+### basic_auth 는 아래 "Credential 생성" 요청 실행 시 자동 세팅됩니다
+POST {{idp_url}}/oauth/token
+Authorization: Basic {{basic_auth}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+
+### ----------------------------------------------------------------
+### Credential 관리 (Internal - Tenant Admin 에서 호출)
+### ----------------------------------------------------------------
+
+### Credential 생성 → credentialId + clientSecret 으로 basic_auth 자동 세팅
+POST {{idp_url}}/internal/v1/credentials
+Content-Type: application/json
+
+{
+  "tenantId": {{tenant_id}},
+  "keyName": "Test Key 2603091640",
+  "scopes": ["product:read", "product:write"],
+  "expiresAt": "2027-12-31T23:59:59"
+}
+
+> {%
+    const credentialId = response.body.credentialId.toString();
+    const clientSecret = response.body.clientSecret.toString();
+    const encoded = btoa(credentialId + ":" + clientSecret);
+    client.global.set("basic_auth", encoded);
+    client.global.set("credential_id", credentialId);
+    client.log("=== basic_auth (http-client.private.env.json 에 복사하세요) ===");
+    client.log(encoded);
+%}
+
+### Credential Secret 로테이션 → basic_auth 갱신
+POST {{idp_url}}/internal/v1/credentials/{{credential_id}}/rotate
+Content-Type: application/json
+
+{
+  "tenantId": {{tenant_id}}
+}
+
+> {%
+    const credentialId = client.global.get("credential_id");
+    const newSecret = response.body.newClientSecret.toString();
+    client.global.set("basic_auth", btoa(credentialId + ":" + newSecret));
+%}
+
+### Credential 삭제
+DELETE {{idp_url}}/internal/v1/credentials/{{credential_id}}
+Content-Type: application/json
+
+{
+  "tenantId": {{tenant_id}}
+}

@@ -1,7 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "mcp__jetbrains__create_new_file"
+      "mcp__jetbrains__create_new_file",
+      "Bash(gradle wrapper:*)",
+      "Bash(./gradlew :idp:compileKotlin:*)",
+      "Bash(java:*)",
+      "Bash(./gradlew wrapper:*)",
+      "Bash(/usr/libexec/java_home:*)",
+      "Bash(./gradlew :open-api-gateway:public:compileKotlin:*)",
+      "Bash(./gradlew build:*)"
     ]
   }
 }

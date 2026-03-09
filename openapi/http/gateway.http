@@ -1,0 +1,80 @@
+### =============================================================
+### Open-API Gateway - http://localhost:9001
+### JWT Bearer 토큰이 필요합니다 (idp.http 에서 발급)
+### Mock Backend - http://localhost:9090 (openapi-test 모듈)
+### =============================================================
+
+
+### ----------------------------------------------------------------
+### Products (scope: product:read / product:write)
+### ----------------------------------------------------------------
+
+### 상품 목록 조회
+GET {{gateway_url}}/api/v1/products
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+### 상품 단건 조회
+GET {{gateway_url}}/api/v1/products/1
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+### 상품 등록
+POST {{gateway_url}}/api/v1/products
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "name": "모니터",
+  "price": 350000,
+  "stock": 20
+}
+
+### 상품 수정
+PATCH {{gateway_url}}/api/v1/products/1
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "price": 1400000,
+  "stock": 8
+}
+
+
+### ----------------------------------------------------------------
+### Orders (scope: order:read / order:write)
+### ----------------------------------------------------------------
+
+### 주문 목록 조회
+GET {{gateway_url}}/api/v1/orders
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+### 주문 단건 조회
+GET {{gateway_url}}/api/v1/orders/1
+Authorization: Bearer {{access_token}}
+Accept: application/json
+
+### 주문 처리 - confirm / ship / cancel
+POST {{gateway_url}}/api/v1/orders/2
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "action": "confirm"
+}
+
+
+### ----------------------------------------------------------------
+### Claims (scope: claim:update)
+### ----------------------------------------------------------------
+
+### 클레임 처리
+PUT {{gateway_url}}/api/v1/claims/1
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "status": "APPROVED",
+  "comment": "클레임 승인 처리"
+}

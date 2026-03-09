@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS openapi_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'openapi'@'%' IDENTIFIED BY 'openapi123';
+GRANT ALL PRIVILEGES ON openapi_db.* TO 'openapi'@'%';
+FLUSH PRIVILEGES;

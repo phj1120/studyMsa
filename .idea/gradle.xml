@@ -4,6 +4,10 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="graalvm-jdk-21" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/email-send-consumer" />
         <option name="gradleJvm" value="graalvm-jdk-21" />
         <option name="modules">
@@ -27,6 +31,32 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/encryptModule" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/openapi" />
+        <option name="gradleJvm" value="graalvm-jdk-21" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/openapi" />
+            <option value="$PROJECT_DIR$/openapi/business" />
+            <option value="$PROJECT_DIR$/openapi/business/business-auth" />
+            <option value="$PROJECT_DIR$/openapi/business/business-tenant" />
+            <option value="$PROJECT_DIR$/openapi/idp" />
+            <option value="$PROJECT_DIR$/openapi/open-api-gateway" />
+            <option value="$PROJECT_DIR$/openapi/open-api-gateway/public" />
+            <option value="$PROJECT_DIR$/openapi/openapi-test" />
+            <option value="$PROJECT_DIR$/openapi/storages" />
+            <option value="$PROJECT_DIR$/openapi/storages/db-core" />
+            <option value="$PROJECT_DIR$/openapi/storages/redis-core" />
+            <option value="$PROJECT_DIR$/openapi/support" />
+            <option value="$PROJECT_DIR$/openapi/support/common" />
+            <option value="$PROJECT_DIR$/openapi/support/jwt" />
+            <option value="$PROJECT_DIR$/openapi/support/logger" />
+            <option value="$PROJECT_DIR$/openapi/support/security" />
+            <option value="$PROJECT_DIR$/openapi/support/web-api" />
+            <option value="$PROJECT_DIR$/openapi/tenant-admin" />
           </set>
         </option>
       </GradleProjectSettings>

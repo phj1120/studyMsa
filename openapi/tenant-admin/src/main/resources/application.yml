@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    default: local
+  application:
+    name: tenant-admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/openapi_db?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: openapi
+    password: openapi123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      # idp가 DDL을 관리하므로 tenant-admin은 검증만
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 9003
+
+logging:
+  level:
+    org.example.openapi: DEBUG

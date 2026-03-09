@@ -1,0 +1,10 @@
+[
+  { "method": "POST",  "pathPattern": "/api/v1/products",    "requiredAction": "product:write" },
+  { "method": "PATCH", "pathPattern": "/api/v1/products/**", "requiredAction": "product:write" },
+  { "method": "GET",   "pathPattern": "/api/v1/products",    "requiredAction": "product:read"  },
+  { "method": "GET",   "pathPattern": "/api/v1/products/**", "requiredAction": "product:read"  },
+  { "method": "GET",   "pathPattern": "/api/v1/orders",      "requiredAction": "order:read"    },
+  { "method": "GET",   "pathPattern": "/api/v1/orders/**",   "requiredAction": "order:read"    },
+  { "method": "POST",  "pathPattern": "/api/v1/orders/**",   "requiredAction": "order:write"   },
+  { "method": "PUT",   "pathPattern": "/api/v1/claims/**",   "requiredAction": "claim:update"  }
+]

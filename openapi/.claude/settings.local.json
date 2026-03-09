@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew :open-api-gateway:public:compileTestKotlin:*)",
+      "Bash(./gradlew :open-api-gateway:public:test:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}
